@@ -13,7 +13,7 @@ public class Hw16Application {
 	public static void main(String[] args) {
 		final ConfigurableApplicationContext context = SpringApplication.run(Hw16Application.class, args);
 
-		StudentDao studentDao = context.getBean(StudentDaoImpl.class, "studentDaoImpl");
+		StudentDao studentDao = context.getBean("studentDaoImpl", StudentDaoImpl.class);
 
 		System.out.println("Get all students: ");
 		// print all students
@@ -42,7 +42,7 @@ public class Hw16Application {
 		System.out.println("Add student from Configuration");
 
 		// create new and add to List
-		Student studentToAdd = context.getBean(Student.class, "studentToAdd");
+		Student studentToAdd = context.getBean("studentToAdd", Student.class);
 		studentDao.create(studentToAdd);
 		// check result print all students again
 		studentDao.getAllStudents().forEach(System.out::println);
